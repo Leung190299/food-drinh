@@ -1,21 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator}from '@react-navigation/drawer';
+import {createStackNavigator} from '@react-navigation/stack'
+import 'react-native';
+import TabBar from './Navigator/TabBar';
+import Drawmenu from './Navigator/Drawmenu';
+
+import { Provider } from 'react-redux';
+import store from './Data/Store';
+import ScannerScreen from './Screens/ScannerScreen';
+
+
+
+const drawer=createDrawerNavigator ();
+const stack=createStackNavigator();
+const drawNavi=()=>{
+  return(
+  <drawer.Navigator 
+      
+     drawerContent={props=><Drawmenu {...props} />}
+     initialRouteName='Homes'
+      > 
+        <drawer.Screen name='Homes' component={TabBar}/>    
+      </drawer.Navigator>
+  )
+}
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+    <Provider store={store}>
+    <NavigationContainer>
+
+      <stack.Navigator screenOptions={
+        {
+          headerShown:false
+        }
+      
+      } initialRouteName='Scanner'>
+        <stack.Screen name='Scanner' component={ScannerScreen}/>
+        <stack.Screen name='Homes' component={drawNavi}/>
+       
+      </stack.Navigator>
+     
+    </NavigationContainer>
+    </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
