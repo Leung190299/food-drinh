@@ -24,7 +24,7 @@ const CartScreen = (props) => {
     },[])
     return (
         <View>
-            <ToolBar {...props} name='Cart'/>
+            <ToolBar {...props} name='Giỏ Hàng'/>
          <ListCart/>
          <TotalPrice table={table}/>
         </View>

@@ -7,6 +7,7 @@ export const menu= require('../assets/image/menu.png');
 export const logo= require('../assets/image/logo.png');
 export const qrcode= require('../assets/image/qrcode.png');
 export const notfound= require('../assets/image/not-found.png');
+export const coin= require('../assets/image/coin.png');
 export default{
     home,
     food,
@@ -16,4 +17,5 @@ export default{
     menu,
     qrcode,
     notfound,
+    coin
 }

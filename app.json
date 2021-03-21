@@ -22,8 +22,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#80ff00"
+      },
+      "package": "com.leung99.foodapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

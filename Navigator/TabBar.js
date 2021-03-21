@@ -20,9 +20,9 @@ const TabBar = () => {
            activeTintColor:COLORS.white,
              inactiveTintColor:COLORS.primary
        }}
-       initialRouteName='Homes'
+       initialRouteName='Home'
        >
-           <bottom.Screen name='Homes'
+           <bottom.Screen name='Home'
            
             options={{
                 tabBarIcon:()=>(

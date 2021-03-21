@@ -8,25 +8,25 @@ import ToolBar from '../Components/ToolBar'
 import { Data } from '../Data/Data'
 import { COLORS, SIZES } from '../Constants'
 import Icons from '../Constants/Icons'
+import { useSelector } from 'react-redux'
 
 export default function HomeScreen(props) {
     const [products,setProducts]=React.useState([]);
+    const shop=useSelector(state=>state.account);
     React.useEffect(()=>{
         const array=[];
-        setTimeout(async() => {
-            const shop=await AsyncStorage.getItem('add');
-            
+        const getproduct= () => {            
             Data.database().ref(shop).child('product').on('child_added',snapshot=>{
-                array.push(snapshot.val());
-                
+                array.push(snapshot.val());               
             })
-    
+ 
             setProducts(array);
-        },0);
+        };
+        return(
+            getproduct ()
+        )        
         
-        
-        
-    },)
+    },[])
     if(products.length<=0){
         return(
             
@@ -42,7 +42,7 @@ export default function HomeScreen(props) {
     return (
        
         <View style={{flex:1,}}>
-        <ToolBar {...props} name='Home' />
+        <ToolBar {...props} name={shop} />
         <ScrollView >
         <Slider list={products}/>
         <MenuNew Data={products} />

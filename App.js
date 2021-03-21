@@ -20,7 +20,7 @@ const drawNavi=()=>{
   <drawer.Navigator 
       
      drawerContent={props=><Drawmenu {...props} />}
-     initialRouteName='Homes'
+     initialRouteName='Home'
       > 
         <drawer.Screen name='Homes' component={TabBar}/>    
       </drawer.Navigator>
