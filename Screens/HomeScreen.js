@@ -13,13 +13,18 @@ import { useSelector } from 'react-redux'
 export default function HomeScreen(props) {
     const [products,setProducts]=React.useState([]);
     const shop=useSelector(state=>state.account);
+    const [name,setName]=React.useState('')
     React.useEffect(()=>{
         const array=[];
+        const id='';
         const getproduct= () => {            
             Data.database().ref(shop).child('product').on('child_added',snapshot=>{
                 array.push(snapshot.val());               
             })
- 
+            Data.database().ref(shop).on('values',snap=>{
+                setName(snap.val());
+            });
+
             setProducts(array);
         };
         return(
@@ -42,7 +47,7 @@ export default function HomeScreen(props) {
     return (
        
         <View style={{flex:1,}}>
-        <ToolBar {...props} name={shop} />
+        <ToolBar {...props} name={name} />
         <ScrollView >
         <Slider list={products}/>
         <MenuNew Data={products} />

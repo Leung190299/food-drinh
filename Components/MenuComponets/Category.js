@@ -24,7 +24,7 @@ const Category = (props) => {
                     paddingHorizontal:15, paddingVertical:8,justifyContent:'center', borderRadius:30,marginHorizontal:5}}
                     onPress={()=>select('All')}>
                <Image source={Icons.food} style={{ height:25, width:25}}/>
-               <Text style={{fontSize:15, fontWeight:'bold',marginLeft:10}}>All</Text>
+               <Text style={{fontSize:15, fontWeight:'bold',marginLeft:10}}>Tất cả</Text>
            </TouchableOpacity>
             {category.map((item)=>{
                 return(
